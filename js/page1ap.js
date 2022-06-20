@@ -28,7 +28,7 @@ function updateAvailableFiles (availableFiles){
         let item = document.createElement('li');
         let atag = document.createElement('a');
         atag.href = availableFiles[i][1];
-        atag.download;
+        atag.download = availableFiles[i][0];
 
         let itemText = document.createTextNode(`${i+1}. ${availableFiles[i][0]}`);
         atag.appendChild(itemText);
