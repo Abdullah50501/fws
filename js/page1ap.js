@@ -4,7 +4,11 @@ let uploadButton = document.getElementById('upload');
 let fileList = document.getElementById('fileList');
 
 //below list to be requsted from server
-let availableFiles = ['file 1', 'file 2', 'file 3']
+let availableFiles = [
+    ['file 1', '../data/share/testfile.txt'],
+    ['file 2', '/var/www/data/share/testfile.txt'], 
+    ['file 3', '../data/share/testfile']
+];
 
 //papulate files in file list
 updateAvailableFiles (availableFiles);
@@ -17,13 +21,18 @@ function uploadtoserver (){
     updateAvailableFiles (availableFiles);
 }
 
+'<a href="test_file.zip" download>Download File</a>'
 function updateAvailableFiles (availableFiles){
     fileList.innerHTML = '';
     for(let i=0; i<availableFiles.length; i++){
-        
         let item = document.createElement('li');
-        let itemText = document.createTextNode(`${i+1}. ${availableFiles[i]}`);
-        item.appendChild(itemText);
+        let atag = document.createElement('a');
+        atag.href = availableFiles[i][1];
+        atag.download;
+
+        let itemText = document.createTextNode(`${i+1}. ${availableFiles[i][0]}`);
+        atag.appendChild(itemText);
+        item.appendChild(atag);
         fileList.appendChild(item);
     }
 }
