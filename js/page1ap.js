@@ -15,6 +15,9 @@ updateAvailableFiles (availableFiles);
 
 uploadButton.addEventListener('click', uploadtoserver);
 function uploadtoserver (){
+    let formData = new FormData();
+    formData.append(fileToBeUploaded.value, fileToBeUploaded.files[0]);
+    fetch('../data/share', {method: "POST", body: formData});
     console.log(`uploading ${fileToBeUploaded.value}`);
     availableFiles.push(fileToBeUploaded.value);
     fileToBeUploaded.value = null;
