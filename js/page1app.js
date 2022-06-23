@@ -16,12 +16,10 @@ updateAvailableFiles (availableFiles);
 uploadButton.addEventListener('click', uploadtoserver);
 function uploadtoserver (){
     let req = new XMLHttpRequest();
-    let formData = new FormData();
-    formData.append('testPc', fileToBeUploaded.files[0]);
     req.open("PUT", `/upload/${fileToBeUploaded.files[0].name}`);
-    req.send(formData);
+    req.send(fileToBeUploaded.files[0]);
     console.log(`uploading ${fileToBeUploaded.files[0].name}`);
-    availableFiles.push(fileToBeUploaded.value);
+    availableFiles.push(fileToBeUploaded.files[0].name);
     fileToBeUploaded.value = null;
     updateAvailableFiles (availableFiles);
 }
